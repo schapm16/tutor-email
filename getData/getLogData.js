@@ -40,7 +40,15 @@ module.exports = function() {
 			let sessionDateTimeISO = xlsxPopulate.numberToDate(session.sessionDate);
 			sessionDateTimeISO.setHours(sessionDateTimeISO.getHours() + session.timeDiff);
 			
-			[sessionDateTime.date, sessionDateTime.time] = sessionDateTimeISO.toLocaleString('en-us').split(', ');
+			let localeStringOptions = {
+				year: '2-digit',
+				month: '2-digit',
+				day: '2-digit',
+				hour: '2-digit',
+				minute: '2-digit',
+			};
+
+			[sessionDateTime.date, sessionDateTime.time] = sessionDateTimeISO.toLocaleString('en-us', localeStringOptions).split(', ');
 			
 			let timezones = ['EST', 'CST', 'MST', 'PST'];
 			sessionDateTime.timezone = timezones[Math.abs(session.timeDiff)];

@@ -3,7 +3,7 @@ const xlsxPopulate = require('xlsx-populate');
 module.exports = function() {
 
 	function readLog() {
-		return xlsxPopulate.fromFileAsync("../Students.xlsx").then(workbook => {
+		return xlsxPopulate.fromFileAsync(process.env.FILEPATH).then(workbook => {
 			let allSessions =  workbook.sheet('Log').usedRange().value().slice(1);
 			return allSessions;
 		});

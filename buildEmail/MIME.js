@@ -7,7 +7,7 @@ module.exports = function(emailAddress, emailContent) {
 
   mimeBuild.addHeader({
     to: `${emailAddress}`,
-    cc: "<Central Support Email Here>",
+    cc: process.env.CENTRALSUPPORTEMAIL,
     subject: `${emailContent.subject}`
   });
 

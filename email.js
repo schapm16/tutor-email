@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const gmailClient = require('./gmailClient');
 const getData = require('./getData');
 const buildEmail = require('./buildEmail');

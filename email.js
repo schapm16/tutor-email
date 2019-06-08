@@ -21,7 +21,14 @@ Promise.all([getData, gmailClient]).then( ready => {
 				'raw': builtEmail
 				}
 			}
-		});
+		}, 
+			(err) => {
+				if (err) throw new Error(`Error creating email for ${eachDataObject.name} \n${err}`);
+				console.log(
+					`Email created for ${eachDataObject.name} on ${eachDataObject.sessionDateTime.date}`
+				)
+			}
+		);
 	});
 
 }).catch( err => console.log(err));
